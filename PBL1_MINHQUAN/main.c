@@ -141,7 +141,7 @@ struct Node* solve(struct Mat** mat, struct Node* x, double eps, int n) {
         struct Node* node = line->head;
         struct Node* yi = x;
         struct Node* headYi = yi;
-        printf("----------------\n");
+        printf("--------------------\n");
         printList(yi);
         printf("\n");
         for (int i = 0; i < n; i++) {
@@ -180,30 +180,39 @@ int main()
     double tmp;
 
     //task 1
+    printf("Input the size of matrix n = ");
     scanf("%d", &n);
     readMat(n, n - 1, "DAYSO.IN");
+    printf("Matrix has been loaded!\n");
     printMat(mat);
 
     //task 2
     struct Node *col = NULL;
+    printf("Input value of the column need to add:\n");
     for (int i = 0; i < n; i++) {
         scanf("%lf", &tmp);
         addToListAtEnd(&col, tmp);
     }
+    printf("Column will be add to position: %d\n", (n - 1) / 2);
     addColMatAtPos(&mat, col, (n - 1) / 2);
+    printf("Added!\n");
     printMat(mat);
     saveMat(mat, "RESULT1.OUT");
 
     //task 3
     newMat();
+    printf("Input the size of matrix n = ");
     scanf("%d", &n);
     readMat(n, n, "RESULT1.OUT");
+    printf("Matrix has been loaded!\n");
     col = NULL;
+    printf("Input the last column:\n");
     for (int i = 0; i < n; i++) {
         scanf("%lf", &tmp);
         addToListAtEnd(&col, tmp);
     }
     addColMatAtPos(&mat, col, n);
+    printf("Now solving:\n");
     printMat(mat);
     struct Node* ans = NULL;
     for (int i = 0; i < n; i++)
